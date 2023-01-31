@@ -40,4 +40,4 @@ More examples will be available in the future.
 
 
 ### 😘 Citation
-If you use this code, please consider citing [our work](https://openreview.net/forum?id=UG8bQcD3Emv)
+If you use this code, please consider citing [our work](https://openreview.net/forum?id=UG8bQcD3Emv).
