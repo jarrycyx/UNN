@@ -16,7 +16,7 @@ This is the official repository of the paper **CUTS: Neural Causal Discovery fro
 
 ### ✍️ Paper summary
 
-<center><img src="CUTS/figures/method_mix.png" width="800px"></center>
+<center><img src="CUTS/figures/method_mix.jpg" width="800px"></center>
 
 Causal discovery from time-series data has been a central task in machine learning. Recently, Granger causality inference is gaining momentum due to its good explainability and high compatibility with emerging deep neural networks. However, most existing methods assume structured input data and degenerate greatly when encountering data with randomly missing entries or non-uniform sampling frequencies, which hampers their applications in real scenarios.  
 
@@ -32,7 +32,7 @@ Please see requirements.txt.
 
 ### Example
 
-<center><img src="CUTS/figures/example.png" width="800px"></center>
+<center><img src="CUTS/figures/example.jpg" width="800px"></center>
 
 We created a simple tutorial that addresses causal discovery on a three-node dataset [`cuts_example.ipynb`](cuts_example.ipynb). 
 
