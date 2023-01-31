@@ -34,7 +34,7 @@ Please see requirements.txt.
 
 <center><img src="CUTS/figures/example.jpg" width="800px"></center>
 
-We created a simple tutorial that addresses causal discovery on a three-node dataset [`cuts_example.ipynb`](cuts_example.ipynb). 
+We created a simple tutorial that addresses causal discovery on a three-node dataset [`cuts_example.ipynb`](CUTS/cuts_example.ipynb). 
 
 More examples will be available in the future.
 
