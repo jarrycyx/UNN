@@ -18,8 +18,8 @@ data:
     noise_sigma: [0.1,0.1]
   pre_sample:
     random_missing:
-      missing_var: [1]
-      missing_prob: 0.2
+      missing_var: all
+      missing_prob: 0.3
       seed: 0
 
   init_fill: zoh
@@ -32,13 +32,13 @@ reproduc:
 cuts:
   n_nodes: 3
   input_step: 1
-  batch_size: 128
+  batch_size: 512
   data_dim: 1
   total_epoch: 100
 
   supervision_policy: masked_before_50
   fill_policy: rate_0.1_after_10
-  show_graph_every: 50
+  show_graph_every: 20
   
   data_pred:
     model: multi_mlp
