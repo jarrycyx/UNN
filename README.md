@@ -28,7 +28,7 @@ Experiments show that CUTS effectively infers causal graphs from irregular time-
 
 ### Requirements
 
-Please see requirements.txt.
+Please see [requirements.txt](requirements.txt).
 
 ### Example
 
