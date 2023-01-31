@@ -1,0 +1,66 @@
+
+dir_name: outputs
+task_name: cuts_example
+
+log:
+  stdout: false
+  stderr: false
+  tensorboard: true
+
+data:
+  name: var
+  param:
+    links:
+        0: []
+        1: [[0, -1, 0.8, lin_f]]
+        2: [[0, -1, 0.8, lin_f], [1, -1, 0.8, lin_f]]
+    T: 10000
+    noise_sigma: [0.1,0.1]
+  pre_sample:
+    random_missing:
+      missing_var: [1]
+      missing_prob: 0.2
+      seed: 0
+
+  init_fill: zoh
+
+reproduc:
+  seed: 42
+  benchmark: false
+  deterministic: true
+
+cuts:
+  n_nodes: 3
+  input_step: 1
+  batch_size: 128
+  data_dim: 1
+  total_epoch: 100
+
+  supervision_policy: masked_before_50
+  fill_policy: rate_0.1_after_10
+  show_graph_every: 50
+  
+  data_pred:
+    model: multi_mlp
+    pred_step: 1
+    mlp_hid: 128
+    mlp_layers: 3
+    lr_data_start: 1e-4
+    lr_data_end: 1e-5
+    weight_decay: 0.001
+    prob: true
+    # disable_graph: true
+
+  graph_discov:
+    lambda_s_start: 0.1
+    lambda_s_end: 0.1
+    lr_graph_start: 1e-2
+    lr_graph_end: 1e-3
+    start_tau: 1
+    end_tau: 0.1
+    dynamic_sampling_milestones: [0]
+    dynamic_sampling_periods: [1]
+
+  causal_thres: value_0.5 # percentile_40
+
+    
