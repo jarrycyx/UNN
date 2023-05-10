@@ -6,6 +6,7 @@ This repository provides our latest research on Causal Neural Network.
 | Algorithm | Summary         | Paper |
 |--------|---------------------------------------------------------------------------|----|
 | CUTS  | EM-Style joint causal graph learning and missing data imputation for irregular temporal data |  [ICLR 2023](https://openreview.net/forum?id=UG8bQcD3Emv) <br> [Latest Version](CUTS/CUTS_ver0324_camera5.pdf) |
+| CUTS+  | Increasing scalability of neural causal discovery on high-dimensional irregular data. | Release soon |
 
 
 ## 🚩 CUTS: Neural Causal Discovery from Irregular Time-Series Data
@@ -41,3 +42,8 @@ More examples will be available in the future.
 
 ### 😘 Citation
 If you use this code, please consider citing [our work](https://openreview.net/forum?id=UG8bQcD3Emv).
+
+
+## 🎄CUTS+
+
+Release soon...
