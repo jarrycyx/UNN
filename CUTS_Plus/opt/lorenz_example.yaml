@@ -1,0 +1,65 @@
+dir_name: outputs
+task_name: multi_cad_lorenz
+
+log:
+  stdout: false
+  stderr: false
+  tensorboard: true
+  
+data:
+  name: lorenz96
+  param:
+    p: 128
+    T: 5000
+    F: 10
+  pre_sample: point_missing
+  missing_prob: 0.6
+  seed: 0
+
+reproduc:
+  seed: 1
+  benchmark: false
+  deterministic: true
+
+multi_cad:
+  n_nodes: 128
+  input_step: 0
+  window_step: 8
+  stride: 1
+  batch_size: 32
+  samples_per_epoch: 2560
+  data_dim: 1
+  total_epoch: 50
+
+  patience: 10
+  warmup: 0
+  
+  causal_thres: value_0.6
+
+  n_groups: 8
+  group_policy: multiply_2_every_20
+
+  show_graph_every: 1
+  val_every: 1
+  
+  data_pred:
+    model: mcuts
+    merge_policy: mlp
+    lr_data_start: 1e-3
+    lr_data_ratio: 0.1
+    weight_decay: 0
+    prob: true
+    in_sample: false
+
+  graph_discov:
+    lr_graph_start: 1e-4
+    lr_graph_ratio: 0.1
+    lambda_s_start: 0.1
+    lambda_s_ratio: 0.1
+    tau_start: 5
+    tau_ratio: 0.1
+    disable_bwd: true
+    separate_bwd: false
+    disable_ind: true
+    disable_graph: false
+    use_true_graph: false
