@@ -40,7 +40,7 @@ def log_time_series(original_data, data_interp, data_pred, log, log_step):
 def calc_and_log_metrics(time_prob_mat, true_cm, log, log_step, threshold=0.5, plot_roc=False):
     causal_graph = (np.max(time_prob_mat, axis=2) > threshold)
     tp = np.mean(causal_graph * true_cm)
-    tn = np.mean((1-causal_graph) * (1-causal_graph))
+    tn = np.mean((1-causal_graph) * (1-true_cm))
     fp = np.mean(causal_graph * (1-true_cm))
     fn = np.mean((1-causal_graph) * true_cm)
     tpr = tp / (tp + fn)
