@@ -13,7 +13,6 @@ from utils.misc import omegaconf2dict
 import re
 import numpy as np
 import matplotlib.pyplot as plt
-import cv2
 
 from datetime import datetime
 from omegaconf import OmegaConf

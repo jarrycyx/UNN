@@ -1,5 +1,5 @@
 dir_name: outputs
-task_name: multi_cad_lorenz
+task_name: lorenz_cuts
 
 log:
   stdout: false
@@ -7,59 +7,67 @@ log:
   tensorboard: true
   
 data:
-  name: lorenz96
+  name: lorenz_96
   param:
     p: 128
-    T: 5000
-    F: 10
-  pre_sample: point_missing
-  missing_prob: 0.6
+    T: 1000
+    seed: 0
+  missing: 
+    name: RBM
+    params:
+      p_block: 0
+      p_noise: 0.3
+      max_seq: 48
+      min_seq: 12
+  pre_impute:
+    name: ZOH
+    params: 
+      total_epoch: 10
+      window_size: 24
+  reduce_data: 1P
   seed: 0
 
 reproduc:
-  seed: 1
+  seed: 42
   benchmark: false
   deterministic: true
 
-multi_cad:
-  n_nodes: 128
-  input_step: 0
-  window_step: 8
-  stride: 1
-  batch_size: 32
-  samples_per_epoch: 2560
-  data_dim: 1
-  total_epoch: 50
 
-  patience: 10
-  warmup: 0
-  
-  causal_thres: value_0.6
+sota:
+  cuts_plus:
+    n_nodes: auto
+    input_step: 1
+    batch_size: 128
+    data_dim: 1
+    total_epoch: 64
 
-  n_groups: 8
-  group_policy: multiply_2_every_20
+    n_groups: 32
+    group_policy: multiply_2_every_20
 
-  show_graph_every: 1
-  val_every: 1
-  
-  data_pred:
-    model: mcuts
-    merge_policy: mlp
-    lr_data_start: 1e-3
-    lr_data_ratio: 0.1
-    weight_decay: 0
-    prob: true
-    in_sample: false
+    supervision_policy: masked_before_100
+    fill_policy: rate_0.1_after_20
+    show_graph_every: 16
+    
+    data_pred:
+      model: multi_lstm
+      pred_step: 1
+      mlp_hid: 32
+      gru_layers: 1
+      shared_weights_decoder: false
+      concat_h: true
+      lr_data_start: 1e-2
+      lr_data_end: 1e-3
+      weight_decay: 0
+      prob: true
 
-  graph_discov:
-    lr_graph_start: 1e-4
-    lr_graph_ratio: 0.1
-    lambda_s_start: 0.1
-    lambda_s_ratio: 0.1
-    tau_start: 5
-    tau_ratio: 0.1
-    disable_bwd: true
-    separate_bwd: false
-    disable_ind: true
-    disable_graph: false
-    use_true_graph: false
+    graph_discov:
+      lambda_s_start: 1e-1
+      lambda_s_end: 1e-2
+      lr_graph_start: 1e-3
+      lr_graph_end: 1e-4
+      start_tau: 1
+      end_tau: 0.1
+      dynamic_sampling_milestones: [0]
+      dynamic_sampling_periods: [1]
+
+    causal_thres: value_0.5 # percentile_40

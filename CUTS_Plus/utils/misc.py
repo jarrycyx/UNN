@@ -24,7 +24,11 @@ def log_time_series(original_data, data_interp, data_pred, log, log_step):
 
 
 def calc_and_log_metrics(time_prob_mat, true_cm, log, log_step, threshold=0.5, plot_roc=True):
-    causal_graph = (np.max(time_prob_mat, axis=2) > threshold)
+    if len(time_prob_mat.shape) == 3:
+        graph = np.max(time_prob_mat, axis=2)
+    else:
+        graph = time_prob_mat
+    causal_graph = graph > threshold
     tp = np.mean(causal_graph * true_cm)
     tn = np.mean((1-causal_graph) * (1-causal_graph))
     fp = np.mean(causal_graph * (1-true_cm))
@@ -38,16 +42,17 @@ def calc_and_log_metrics(time_prob_mat, true_cm, log, log_step, threshold=0.5, p
 
     if plot_roc:
         fpr, tpr, thres = roc_curve(true_cm.reshape(-1) > 0.5, 
-                                    np.max(time_prob_mat, axis=2).reshape(-1), pos_label=1)
+                                    graph.reshape(-1), pos_label=1)
         fig = plt.figure(figsize=[4, 4])
         plt.plot(fpr, tpr)
         log.tblogger.add_figure(tag="ROC", figure=fig, global_step=log_step)
         
-        log.log_npz(name="graph", data={"true_cm":true_cm, 
-                                        "pred_cm":np.max(time_prob_mat, axis=2)})
+        log.log_npz(name="graph", 
+                    data={"true_cm":true_cm, "pred_cm":graph},
+                    iters=log_step)
 
     auc = roc_auc_score(true_cm.reshape(-1)>0.5,
-                        np.max(time_prob_mat, axis=2).reshape(-1))
+                        graph.reshape(-1))
     log.log_metrics({"metrics/auc": auc}, log_step)
     return auc
 
@@ -110,10 +115,10 @@ def plot_causal_matrix(cmtx, class_names=None, figsize=None, vmin=None, vmax=Non
     Returns:
         img (figure): matplotlib figure.
     """
-    
     num_classes = cmtx.shape[0]
     if class_names is None or type(class_names) != list:
         class_names = [str(i) for i in range(num_classes)]
+
     
     figsize[0] = 30 if figsize[0] > 30 else figsize[0]
     figsize[1] = 20 if figsize[1] > 20 else figsize[1]

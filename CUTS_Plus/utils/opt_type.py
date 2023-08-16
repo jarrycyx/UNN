@@ -18,6 +18,18 @@ class TrainOpt:
   total_epoch: int
   time_window: int
     
+    
+@dataclass
+class TsGAEopt:
+    dir_name: str
+    task_name: str
+    optimizer: Any
+    reproduc: ReproducOpt
+    network: NetworkOpt
+    train: TrainOpt
+    log: Any
+    causal_thres: str
+    
 @dataclass
 class MultiCADopt:
     dir_name: str

@@ -16,33 +16,6 @@ import numpy as np
 from scipy.integrate import odeint
 from einops import rearrange
 
-from utils.spring_sim import SpringSim
-
-
-
-
-
-def load_springs_data(T, N, interaction_strength=0.1, sample_freq=10, noise_std=0.1):    
-    sim = SpringSim(interaction_strength=interaction_strength, n_balls=N, noise_var=noise_std**2)
-    loc, vel, edges = sim.sample_trajectory(
-        T=T*sample_freq,
-        sample_freq=sample_freq,
-        fixed_particle=False,
-        influencer=False,
-        uninfluenced=False,
-        confounder=False,
-    )  # 5000, 100
-
-    true_cm = edges
-    true_cm += np.eye(true_cm.shape[0])
-    print(true_cm)
-    
-    X_np = rearrange(loc, "t d n -> t n d")
-    return X_np, edges
-
-
-
-
 
 ######################################
 # Function for loading input data 
@@ -88,35 +61,35 @@ def load_dream_data(dataset_id):
     device = "cpu"
 
     if(dataset_id == 0):
-        InputDataFilePath = "SRU_for_GCI/data/dream3/Dream3TensorData/Size100Ecoli1.pt"
-        RefNetworkFilePath = "SRU_for_GCI/data/dream3/TrueGeneNetworks/InSilicoSize100-Ecoli1.tsv"
+        InputDataFilePath = "causal_discov_sota/SRU_for_GCI/data/dream3/Dream3TensorData/Size100Ecoli1.pt"
+        RefNetworkFilePath = "causal_discov_sota/SRU_for_GCI/data/dream3/TrueGeneNetworks/InSilicoSize100-Ecoli1.tsv"
     elif(dataset_id == 1):
-        InputDataFilePath = "SRU_for_GCI/data/dream3/Dream3TensorData/Size100Ecoli2.pt"
-        RefNetworkFilePath = "SRU_for_GCI/data/dream3/TrueGeneNetworks/InSilicoSize100-Ecoli2.tsv"
+        InputDataFilePath = "causal_discov_sota/SRU_for_GCI/data/dream3/Dream3TensorData/Size100Ecoli2.pt"
+        RefNetworkFilePath = "causal_discov_sota/SRU_for_GCI/data/dream3/TrueGeneNetworks/InSilicoSize100-Ecoli2.tsv"
     elif(dataset_id == 2):
-        InputDataFilePath = "SRU_for_GCI/data/dream3/Dream3TensorData/Size100Yeast1.pt"
-        RefNetworkFilePath = "SRU_for_GCI/data/dream3/TrueGeneNetworks/InSilicoSize100-Yeast1.tsv"
+        InputDataFilePath = "causal_discov_sota/SRU_for_GCI/data/dream3/Dream3TensorData/Size100Yeast1.pt"
+        RefNetworkFilePath = "causal_discov_sota/SRU_for_GCI/data/dream3/TrueGeneNetworks/InSilicoSize100-Yeast1.tsv"
     elif(dataset_id == 3):
-        InputDataFilePath = "SRU_for_GCI/data/dream3/Dream3TensorData/Size100Yeast2.pt"
-        RefNetworkFilePath = "SRU_for_GCI/data/dream3/TrueGeneNetworks/InSilicoSize100-Yeast2.tsv"
+        InputDataFilePath = "causal_discov_sota/SRU_for_GCI/data/dream3/Dream3TensorData/Size100Yeast2.pt"
+        RefNetworkFilePath = "causal_discov_sota/SRU_for_GCI/data/dream3/TrueGeneNetworks/InSilicoSize100-Yeast2.tsv"
     elif(dataset_id == 4):
-        InputDataFilePath = "SRU_for_GCI/data/dream3/Dream3TensorData/Size100Yeast3.pt"
-        RefNetworkFilePath = "SRU_for_GCI/data/dream3/TrueGeneNetworks/InSilicoSize100-Yeast3.tsv"
+        InputDataFilePath = "causal_discov_sota/SRU_for_GCI/data/dream3/Dream3TensorData/Size100Yeast3.pt"
+        RefNetworkFilePath = "causal_discov_sota/SRU_for_GCI/data/dream3/TrueGeneNetworks/InSilicoSize100-Yeast3.tsv"
     elif(dataset_id == 5):
-        InputDataFilePath = "SRU_for_GCI/data/dream3/Dream3TensorData/Size10Ecoli1.pt"
-        RefNetworkFilePath = "SRU_for_GCI/data/dream3/TrueGeneNetworks/InSilicoSize10-Ecoli1.tsv"
+        InputDataFilePath = "causal_discov_sota/SRU_for_GCI/data/dream3/Dream3TensorData/Size10Ecoli1.pt"
+        RefNetworkFilePath = "causal_discov_sota/SRU_for_GCI/data/dream3/TrueGeneNetworks/InSilicoSize10-Ecoli1.tsv"
     elif(dataset_id == 6):
-        InputDataFilePath = "SRU_for_GCI/data/dream3/Dream3TensorData/Size10Ecoli2.pt"
-        RefNetworkFilePath = "SRU_for_GCI/data/dream3/TrueGeneNetworks/InSilicoSize10-Ecoli2.tsv"
+        InputDataFilePath = "causal_discov_sota/SRU_for_GCI/data/dream3/Dream3TensorData/Size10Ecoli2.pt"
+        RefNetworkFilePath = "causal_discov_sota/SRU_for_GCI/data/dream3/TrueGeneNetworks/InSilicoSize10-Ecoli2.tsv"
     elif(dataset_id == 7):
-        InputDataFilePath = "SRU_for_GCI/data/dream3/Dream3TensorData/Size10Yeast1.pt"
-        RefNetworkFilePath = "SRU_for_GCI/data/dream3/TrueGeneNetworks/InSilicoSize10-Yeast1.tsv"
+        InputDataFilePath = "causal_discov_sota/SRU_for_GCI/data/dream3/Dream3TensorData/Size10Yeast1.pt"
+        RefNetworkFilePath = "causal_discov_sota/SRU_for_GCI/data/dream3/TrueGeneNetworks/InSilicoSize10-Yeast1.tsv"
     elif(dataset_id == 8):
-        InputDataFilePath = "SRU_for_GCI/data/dream3/Dream3TensorData/Size10Yeast2.pt"
-        RefNetworkFilePath = "SRU_for_GCI/data/dream3/TrueGeneNetworks/InSilicoSize10-Yeast2.tsv"
+        InputDataFilePath = "causal_discov_sota/SRU_for_GCI/data/dream3/Dream3TensorData/Size10Yeast2.pt"
+        RefNetworkFilePath = "causal_discov_sota/SRU_for_GCI/data/dream3/TrueGeneNetworks/InSilicoSize10-Yeast2.tsv"
     elif(dataset_id == 9):
-        InputDataFilePath = "SRU_for_GCI/data/dream3/Dream3TensorData/Size10Yeast3.pt"
-        RefNetworkFilePath = "SRU_for_GCI/data/dream3/TrueGeneNetworks/InSilicoSize10-Yeast3.tsv"
+        InputDataFilePath = "causal_discov_sota/SRU_for_GCI/data/dream3/Dream3TensorData/Size10Yeast3.pt"
+        RefNetworkFilePath = "causal_discov_sota/SRU_for_GCI/data/dream3/TrueGeneNetworks/InSilicoSize10-Yeast3.tsv"
     else:
         print("Error while loading gene training data")    
 
@@ -128,20 +101,6 @@ def load_dream_data(dataset_id):
     # Gref = Gref.T
     
     return Xtrain, Gref
-
-
-
-
-
-def load_netsim_data(dataset_id):
-    fileName = "SRU_for_GCI/data/netsim/sim3_subject_%s.npz" % (dataset_id)
-    ld = np.load(fileName)
-    X_np = ld['X_np']
-    X_np = rearrange(X_np, "n t -> t n")
-    Gref = ld['Gref']
-    return X_np, Gref
-
-
 
 
 

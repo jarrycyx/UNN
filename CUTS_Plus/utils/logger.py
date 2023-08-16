@@ -67,8 +67,8 @@ class MyLogger():
             save_path = opj(self.log_dir)
         else:
             save_path = opj(self.log_dir, f"iter_{iters:d}", name)
-        os.makedirs(opd(save_path), exist_ok=True)
-        np.savez(save_path, **data)
+        os.makedirs(save_path, exist_ok=True)
+        np.savez(opj(save_path, "graph.npz"), **data)
 
     def close(self):
         for logger_name in self.logger_dict.keys():
