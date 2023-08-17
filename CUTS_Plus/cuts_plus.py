@@ -365,7 +365,7 @@ class MultiCAD(object):
             
             # Show TPR FPR AUC ROC
             if true_cm is not None:
-                # Graph = rearrange(Graph, "n m -> m n")
+                Graph = rearrange(Graph, "n m -> m n")
                 auc = calc_and_log_metrics(Graph, true_cm, 
                                            self.log, graph_discov_step, plot_roc=plot_roc)
         

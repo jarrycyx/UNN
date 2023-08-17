@@ -38,7 +38,7 @@ class MPNN(nn.Module):
         b, c, n = x.shape
         
         x_repeat = x[:, :, :, None].expand(-1, -1, -1, n) # [b, c, n, n]
-        graph = rearrange(graph, 'b n m -> b m n')
+        # graph = rearrange(graph, 'b n m -> b m n')
         x_messages = torch.einsum('bcmn,bmn->bcmn', (x_repeat, graph))
         x_messages = rearrange(x_messages, 'b c m n -> b (c m) n')
         
