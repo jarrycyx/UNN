@@ -30,8 +30,6 @@ python demo.py
 
 By following these steps, installing all the dependencies, and running the demo directly, you should be able to successfully find outputs in './outputs'.
 
-### Results
+### Visualization
 
-<center class="half">
-    <img src="../CausalTime/figures/pca.png" width="300"/><img src="../CausalTime/figures/tsne.png" width="300"/>
-</center>
+<img src="../CausalTime/figures/pca.png" width="300"><img src="../CausalTime/figures/tsne.png" width="300">
