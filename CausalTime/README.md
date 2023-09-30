@@ -32,5 +32,6 @@ By following these steps, installing all the dependencies, and running the demo 
 
 ### Results
 
-<center><img src="../CausalTime/figures/pca.png" width="300px"></center>
-<center><img src="../CausalTime/figures/tsne.png" width="300px"></center>
+<center class="half">
+    <img src="../CausalTime/figures/pca.png" width="300"/><img src="../CausalTime/figures/tsne.png" width="300"/>
+</center>
