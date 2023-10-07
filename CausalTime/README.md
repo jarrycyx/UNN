@@ -1,7 +1,7 @@
 ## 🍺 CausalTime: Realistically Generated Time-series for Benchmarking of Causal Discovery
 
 
-[arXiv](https://arxiv.org/abs/XXX) ｜ [Official Website](https://www.causaltime.cc/)
+[arXiv](https://arxiv.org/abs/2310.01753) ｜ [Official Website](https://www.causaltime.cc/)
 
 
 ### ✍️ Paper summary
