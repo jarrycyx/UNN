@@ -7,12 +7,12 @@ This repository provides our latest research on Causal Neural Network.
 |--------|---------------------------------------------------------------------------|----| ----|
 | CUTS  | EM-Style joint causal graph learning and missing data imputation for irregular temporal data |  [ICLR 2023](https://openreview.net/forum?id=UG8bQcD3Emv) <br> [Latest Version](CUTS/CUTS_ver0324_camera5.pdf) |[Code](CUTS/) 
 | CUTS+  | Increasing scalability of neural causal discovery on high-dimensional irregular data. | [arXiv](https://arxiv.org/abs/2305.05890) |[Code](CUTS_Plus/) 
-| CausalTime  | A novel pipeline capable of generating realistic time-series along with a ground truth causal graph that is generalizable to different fields. [Official Website.](https://www.causaltime.cc/) | [arXiv](https://arxiv.org/abs/2310.01753) | [Code](CausalTime/)
+| CausalTime  Benchmark| A novel pipeline capable of generating realistic time-series along with a ground truth causal graph that is generalizable to different fields. [Official Website.](https://www.causaltime.cc/) | [arXiv](https://arxiv.org/abs/2310.01753) | [Code](CausalTime/)
 
 
 ## 🍺 CausalTime: Realistically Generated Time-series for Benchmarking of Causal Discovery
 
-[arXiv](https://arxiv.org/abs/2310.01753) | [Code🧑‍💻](CausalTime/) ｜ [Official Website](https://www.causaltime.cc/)
+[Official Website](https://www.causaltime.cc/) ｜ [arXiv](https://arxiv.org/abs/2310.01753) | [Generation Code🧑‍💻](CausalTime/) ｜ [Dataset Download](https://www.causaltime.cc/dataset/)
 
 <center><img src="CausalTime/figures/arch.png" width="800px"></center>
 
