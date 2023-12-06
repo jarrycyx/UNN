@@ -12,7 +12,7 @@ from data_prep.pla_data.patient_data import PatientData
 from data_prep.data_utils.time_format import time2str
 
 
-plt.rcParams['font.sans-serif'] = "Arial"
+# plt.rcParams['font.sans-serif'] = "Arial"
 
 ENGLISH_LUT = {
     "平均红细胞血红蛋白浓度": "MCHC",
