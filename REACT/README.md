@@ -1,6 +1,10 @@
 # Official Repository for "Ultra-efficient causal deep learning for Dynamic CSA-AKI Detection Using Minimal Variables"
 
 
+[![medRxiv](https://img.shields.io/badge/Paper-medRxiv-blue)](https://www.medrxiv.org/content/10.1101/2023.12.04.23299332v1)
+[![Colab](https://img.shields.io/badge/Code-Colab-orange)](https://colab.research.google.com/drive/1dPrgTSfqIWwUkGjaLjwNT1X925jz6n7P?usp=sharing)
+[![Website](https://img.shields.io/badge/Website-Online-red)](http://www.causal-cardiac.com)
+
 ## ✍️ Paper summary
 
 REACT (Real-time Evaluation and Anticipation with Causal disTillation): a causal deep learning approach that
@@ -9,10 +13,13 @@ causal discovery to develop REACT, a reliable and generalizable
 model to predict a patient's risk of developing CSA-AKI within the next
 48 hours.
 
+## User-friendly website
+
+Try dynamic early alerts of CSA-AKI at [web-based platform](http://www.causal-cardiac.com).
 
 ## Running the code on Google Colab
 
-To be updated.
+Run our example at [Google Colab](https://colab.research.google.com/drive/1dPrgTSfqIWwUkGjaLjwNT1X925jz6n7P?usp=sharing) to see how REACT works on simulated data.
 
 ## Running the code locally
 
