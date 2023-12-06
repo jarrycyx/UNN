@@ -1,22 +1,16 @@
-import tqdm
-import sqlite3
+
 import numpy as np
 import torch
 import time
-import multiprocessing
-from multiprocessing import Process, Pool
 from torch.utils.data import Dataset
-import traceback
 import os
 from scipy import interpolate
-import importlib
 
 from data_prep.pla_data.patient_data import PatientData
 from data_prep.data_utils.csv_loader import read_csv
 from data_prep.data_utils.item_sel import sel_names
 
-from data_prep.data_utils import pylogging
-from data_prep.data_utils.pylogging import l, set_async_logger, reset_logger, AsyncLogger, logger_init
+from data_prep.data_utils.pylogging import l
 
 
 dir_name = time.strftime("Medset2_ver%Y%m%d.log")

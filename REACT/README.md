@@ -34,3 +34,7 @@ pip install -r requirements.txt
 ### Run the notebook
 
 You can run the notebook `run_example.ipynb` to see how REACT works on simulated data.
+
+
+## 😘 Citation
+If you use this code, please consider citing [our work](https://www.medrxiv.org/content/10.1101/2023.12.04.23299332v1).
