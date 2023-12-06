@@ -1,0 +1,202 @@
+dir_name: outputs
+task_name: exp_by_center
+
+log:
+  stdout: false
+  stderr: false
+  tensorboard: true
+
+data:
+  name: pla
+  test:
+    db_path: data_dir/pla_data_ver0728.db
+    include_center: [center_HZ, center_LZ, center_nanjing_v2]
+    max_patient: 1e8
+    use_data_cache: true
+    time_interval: [none, none]
+    data_cache_path: example/example_dataset.pt
+  
+  shared_param:
+    multiprocess: true
+    timeseries_endpoint: all_points_in_336h # op_time
+    time_series_length: 168 
+    time_series_resolution: 7200 #s
+    prediction_window: [6, 12, 24, 48]
+    dy_interp_type: absence_feat
+    st_interp_type: absence_feat
+    cuda_data: false
+    pred_tasks:
+      - name: all_aki_6h
+        code:
+          "no_aki_14d_6h": 0
+          "mild_aki_14d_6h": 1
+          "moderate_aki_14d_6h": 1
+          "severe_aki_14d_6h": 1
+      - name: moderate_severe_aki_6h
+        code:
+          "no_aki_14d_6h": 0
+          "mild_aki_14d_6h": 0
+          "moderate_aki_14d_6h": 1
+          "severe_aki_14d_6h": 1
+      - name: severe_aki_6h
+        code:
+          "no_aki_14d_6h": 0
+          "mild_aki_14d_6h": 0
+          "moderate_aki_14d_6h": 0
+          "severe_aki_14d_6h": 1
+
+
+      - name: all_aki_12h
+        code:
+          "no_aki_14d_12h": 0
+          "mild_aki_14d_12h": 1
+          "moderate_aki_14d_12h": 1
+          "severe_aki_14d_12h": 1
+      - name: moderate_severe_aki_12h
+        code:
+          "no_aki_14d_12h": 0
+          "mild_aki_14d_12h": 0
+          "moderate_aki_14d_12h": 1
+          "severe_aki_14d_12h": 1
+      - name: severe_aki_12h
+        code:
+          "no_aki_14d_12h": 0
+          "mild_aki_14d_12h": 0
+          "moderate_aki_14d_12h": 0
+          "severe_aki_14d_12h": 1
+
+
+      - name: all_aki_24h
+        code:
+          "no_aki_14d_24h": 0
+          "mild_aki_14d_24h": 1
+          "moderate_aki_14d_24h": 1
+          "severe_aki_14d_24h": 1
+      - name: moderate_severe_aki_24h
+        code:
+          "no_aki_14d_24h": 0
+          "mild_aki_14d_24h": 0
+          "moderate_aki_14d_24h": 1
+          "severe_aki_14d_24h": 1
+      - name: severe_aki_24h
+        code:
+          "no_aki_14d_24h": 0
+          "mild_aki_14d_24h": 0
+          "moderate_aki_14d_24h": 0
+          "severe_aki_14d_24h": 1
+
+
+      - name: all_aki_48h
+        code:
+          "no_aki_14d_48h": 0
+          "mild_aki_14d_48h": 1
+          "moderate_aki_14d_48h": 1
+          "severe_aki_14d_48h": 1
+      - name: moderate_severe_aki_48h
+        code:
+          "no_aki_14d_48h": 0
+          "mild_aki_14d_48h": 0
+          "moderate_aki_14d_48h": 1
+          "severe_aki_14d_48h": 1
+      - name: severe_aki_48h
+        code:
+          "no_aki_14d_48h": 0
+          "mild_aki_14d_48h": 0
+          "moderate_aki_14d_48h": 0
+          "severe_aki_14d_48h": 1
+
+          
+
+    dy_sel:
+      rules: [".*急性.*", "其他", "其它"]
+      mode: black_list
+    st_sel:
+      rules: [".*急性.*"]
+      mode: black_list
+    use_historic: false
+    use_after_endpoint: false
+    use_basic_info: true
+
+  init_fill: zoh
+
+reproduc:
+  seed: 42
+  benchmark: false
+  deterministic: true
+
+gc_pred:
+  dy_feat_num: auto
+  st_feat_num: auto
+  dy_dim: auto
+  st_dim: auto
+  t_length: auto
+  input_step: 1
+  batch_size: 2048
+  total_epoch: 40
+
+  time_graph:
+    enable: false
+    time_cumu_type: prod
+    time_chunk_num: 14
+
+  local_expl:
+    enable: false
+    loss: local_expl_regularizer_l1
+    lambda_s: 1e-4
+    sigma: 0.5
+    time_cumu_type: prod
+    time_chunk_num: 14
+    sample_type: "gumbel"
+    start_after: 2
+
+  dataloader:
+    shuffle: true
+    num_workers: 4
+    pin_memory: true
+    prefetch_factor: 2
+
+  valid_every: 5
+  test_every: 5
+  show_graph_every: 1
+  save_model_every: 5
+  full_graph: false
+  
+  data_pred:
+    model: multitask_lstm
+    pred_dim: auto
+    mlp_hid: 256
+    mlp_layers: 3
+    prob: true
+    dropout: 0
+    hard_mask: false
+
+    optim: adam
+    scheduler: step
+    weight_decay: 3e-4
+    lr_start: 1e-3
+    lr_end: 1e-4
+
+    loss: multitask_ce
+
+  graph_discov:
+    start_after: -1
+    train_cycle: 1
+
+    freeze_graph_after: 40
+    freeze_dy_thres: 0.2
+    freeze_st_thres: 0.2
+    
+    lambda_s_start: 0.005
+    lambda_s_end: 0.005
+    start_tau: 1
+    end_tau: 0.1
+    dynamic_sampling_milestones: [0]
+    dynamic_sampling_periods: [1]
+    norm_by_shape: false
+
+    optim: adam
+    scheduler: step
+    weight_decay: 0
+    lr_start: 1e-2
+    lr_end: 1e-3
+
