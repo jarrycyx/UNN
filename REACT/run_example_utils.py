@@ -24,7 +24,7 @@ from utils.misc import (
 from utils.opt_type import MultiCADopt
 from utils.logger import MyLogger
 
-plt.rcParams["font.sans-serif"] = "Arial"
+# plt.rcParams["font.sans-serif"] = "Arial"
 
 
 class Example_Prediction(Granger_Causal_Prediction):

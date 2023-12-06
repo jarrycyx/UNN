@@ -1,5 +1,4 @@
 from nets.gc_pred_nets import *
-from nets.causal_discov_nets import *
 from nets.loss import *
 
 
@@ -50,22 +49,6 @@ def build_net(args, device, mode="pred"):
             local_time_cumu_type=args.local_expl.time_cumu_type,
             local_time_chunk_num=args.local_expl.time_chunk_num,
         ).to(device)
-    elif args.data_pred.model == "multi_lstm":
-        fitting_model = MultiLSTM(args.dy_feat_num * args.dy_dim,
-                                  args.data_pred.mlp_hid,
-                                  args.dy_dim,
-                                  args.data_pred.mlp_layers,
-                                  args.dy_feat_num
-                                  ).to(device)
-        # fitting_model = GraphImputNet(pred_model, args.data_pred.pred_window)
-    elif args.data_pred.model == "multi_mlp":
-        fitting_model = MultiMLP(args.dy_feat_num * args.dy_dim * args.t_length,
-                                 args.data_pred.mlp_hid,
-                                 args.dy_dim,
-                                 args.data_pred.mlp_layers,
-                                 args.dy_feat_num
-                                 ).to(device)
-        # fitting_model = GraphImputNet(pred_model, args.data_pred.pred_window)
     else:
         raise NotImplementedError
 
