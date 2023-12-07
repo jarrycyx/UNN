@@ -20,7 +20,7 @@ This repository provides our latest research on Causal Neural Network.
 
 [Official Website](https://www.causaltime.cc/) ｜ [arXiv](https://arxiv.org/abs/2310.01753) | [Generation Code🧑‍💻](CausalTime/) ｜ [Dataset Download](https://www.causaltime.cc/dataset/)
 
-<center><img src="CausalTime/figures/arch.png" width="800px"></center>
+<center><img src="CausalTime/figures/arch_github.png" width="800px"></center>
 
 ## 🎄CUTS+: High-dimensional Causal Discovery from Irregular Time-series
 [arXiv](https://arxiv.org/abs/2305.05890) | [Code🧑‍💻](CUTS_Plus/) 
