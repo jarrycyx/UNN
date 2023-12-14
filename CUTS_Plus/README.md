@@ -9,7 +9,7 @@ Recently, researchers successfully discover causality by combining neural networ
 
 To overcome these limitations, We propose CUTS+, which is built on the Granger-causality-based causal discovery method CUTS and raises the scalability by introducing a technique called Coarse-to-fine-discovery (C2FD) and leveraging a message-passing-based graph neural network (MPGNN). Compared to previous methods on simulated, quasi-real, and real datasets, we show that CUTS+ largely improves the causal discovery performance on high-dimensional data with different types of irregular sampling.
 
-<center><img src="../CUTS_Plus/figures/arch.png" width="800px"></center>
+<center><img src="../CUTS_Plus/github_files/arch.png" width="800px"></center>
 
 
 ### Requirements

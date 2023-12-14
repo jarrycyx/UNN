@@ -10,7 +10,7 @@ Time-series causal discovery (TSCD) is a fundamental problem of machine learning
 
 Firstly, we harness deep neural networks along with normalizing flow to accurately capture realistic dynamics. Secondly, we extract hypothesized causal graphs by performing importance analysis on the neural network or leveraging prior knowledge. Thirdly, we derive the ground truth causal graphs by splitting the causal model into causal term, residual term, and noise term. Lastly, using the fitted network and the derived causal graph, we generate corresponding versatile time-series proper for algorithm assessment. In the experiments, we validate the fidelity of the generated data through qualitative and quantitative experiments, followed by a benchmarking of existing TSCD algorithms using these generated datasets. CausalTime offers a feasible solution to evaluating TSCD algorithms in real applications and can be generalized to a wide range of fields. For easy use of the proposed approach, we also provide a user-friendly website, hosted on www.causaltime.cc.
 
-<center><img src="../CausalTime/figures/arch_github.png" width="800px"></center>
+<center><img src="../CausalTime/github_files/arch_github.png" width="800px"></center>
 
 ### Usage
 
@@ -32,4 +32,4 @@ By following these steps, installing all the dependencies, and running the demo 
 
 ### Visualization
 
-<img src="../CausalTime/figures/pca.png" width="300"><img src="../CausalTime/figures/tsne.png" width="300">
+<img src="../CausalTime/github_files/pca.png" width="300"><img src="../CausalTime/github_files/tsne.png" width="300">
