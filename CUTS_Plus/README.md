@@ -1,6 +1,6 @@
 
 ## 🎄CUTS+: High-dimensional Causal Discovery from Irregular Time-series
-[arXiv](https://arxiv.org/abs/2305.05890) | [Tutorial (Coming Soon) ![Open filled In Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/) 
+[arXiv](https://arxiv.org/abs/2305.05890) | [Tutorial (Coming Soon) ![Open filled In Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/) | [Supplementary Materials](CUTS_Plus/github_files/CUTS_Plus_Supp_ver1214.pdf) 
 
 
 ### ✍️ Paper summary
