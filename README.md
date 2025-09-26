@@ -8,7 +8,7 @@ This repository provides our latest research on Causal Neural Network.
 | CUTS  | EM-Style joint causal graph learning and missing data imputation for irregular temporal data |  [ICLR 2023](https://openreview.net/forum?id=UG8bQcD3Emv) <br> [Latest Version](CUTS/CUTS_ver0324_camera5.pdf) |[Code](CUTS/) 
 | CUTS+  | Increasing scalability of neural causal discovery on high-dimensional irregular data. | [AAAI-24](https://ojs.aaai.org/index.php/AAAI/article/view/29034) [Supplements](CUTS_Plus/github_files/CUTS_Plus_Supp_ver1214.pdf) |[Code](CUTS_Plus/) 
 | CausalTime  Benchmark| A novel pipeline capable of generating realistic time-series along with a ground truth causal graph that is generalizable to different fields. [Official Website.](https://www.causaltime.cc/) |  [ICLR 2024](https://openreview.net/forum?id=iad1yyyGme) | [Code](CausalTime/)
-| REACT | A causal deep learning approach that combines neural networks with causal discovery to develop a reliable and generalizable model to predict a patient's risk of developing CSA-AKI within the next 48 hours. | [The Lancet Digital Health](https://www.thelancet.com/journals/landig/article/PIIS2589-7500(25)00083-4/fulltext?rss=yes) <br> Accepted in The Lancet Digital Health | [Code](REACT/)
+| REACT | A causal deep learning approach that combines neural networks with causal discovery to develop a reliable and generalizable model to predict a patient's risk of developing CSA-AKI within the next 48 hours. | [The Lancet Digital Health](https://www.thelancet.com/journals/landig/article/PIIS2589-7500(25)00083-4/fulltext?rss=yes) | [Code](REACT/)
 
 
 ## 🏥 Causal deep learning for real-time detection of cardiac surgery-associated acute kidney injury: derivation and validation in seven time-series cohorts
